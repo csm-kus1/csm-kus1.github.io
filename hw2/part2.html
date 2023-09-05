@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Part2 of homework2">
+	<meta name="author" content="Siuling Ku">
+	<title>Homework 2 part 2</title>
+
+    <script>
+        function process()
+        {
+            // declar variables
+            var n1, n2, n3;
+            var sum, ave, product, largest, smallest;
+
+            input1=document.getElementById("num1").value;
+            input2=document.getElementById("num2").value;
+            input3=document.getElementById("num3").value;
+
+            n1 = parseInt(input1);
+            n2 = parseInt(input2);
+            n3 = parseInt(input3);
+
+            var display;
+
+            if (isNaN(n1) || isNaN(n2) || isNaN(n3))
+            {
+                display = "ERROR: at least one of the input value is not a number";
+            }
+            else
+            {
+                sum = n1+n2+n3;
+                ave = sum/3;
+                product = n1*n2*n3;
+                min = Math.min(n1, n2, n3);
+                max = Math.max(n1, n2, n3);
+
+                //display
+                display = "The inputted numbers were " + n1 + ", " + n2 + ", " + n3 + "\n";
+                display += "Sum = " + sum + ", Average = " + ave + ", Product = " + product + "\n";
+                display += "Min = " + min + ", Max = " + max + "\n";
+               
+            }
+            document.getElementById("result").value = display;
+
+        }
+    </script>
+</head>
+	
+<body>
+
+<h2>Homework 2, part 2</h2>
+<p>
+Calculate the sum, the average, and the product of the three numbers input.<br>
+Any trailing decimal values will be truncated.
+Also calculate the smallest and the largest of the three numbers.<br>
+Any non-numbers will result in error.
+</p>
+<br><br>
+
+<form id="myform" name="myform">
+Number 1: <input type="number" id="num1" autofocus> <br>
+Number 2: <input type="number" id="num2" > <br>
+Number 3: <input type="number" id="num3" > <br>
+<br>
+<br>
+
+<br>
+Results: 
+<textarea rows="4" cols="60" id="result" readonly placeholder="Click Submit to get result."></textarea>
+<br>
+
+<input type="button" onclick="process()" value="SUBMIT">
+<input type="reset" value="RESET">
+
+</form>
+
+<footer>
+    <h3>
+        <a href="../hw2.html">Back to HW2</a>
+    </h3>
+    
+</footer>
+
+</body>
+</html>
