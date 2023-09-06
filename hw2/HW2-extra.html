@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="extra credit for HW2">
+	<meta name="author" content="Siuling Ku">
+	<title>HW2 extra credit, currency conversion table</title>
+
+
+    <style>
+        input {text-align: right;}
+        body {background-color: #dcf5e7;}
+        .body { width: 550px; margin: 0px auto;}
+
+        table, th, td { border: 1px solid black };
+
+    </style>
+
+    <script>
+        function process()
+        {
+            // First define the exchange rate
+        
+
+            //let EuroRate = parseInt(document.forms["myform"].elements["EuroRate"].value);
+            let EuroRate = parseFloat(document.getElementById("EuroRate").innerHTML);
+            let CanRate = parseFloat(document.getElementById("CanRate").innerHTML);
+            let HKRate = parseFloat(document.getElementById("HKRate").innerHTML);
+            let YenRate = parseFloat(document.getElementById("YenRate").innerHTML);
+            let PesoRate = parseFloat(document.getElementById("PesoRate").innerHTML);
+
+            let DollarAmount = parseFloat(document.forms["myform"].elements["DollarAmount"].value);
+
+           if (isNaN(DollarAmount))
+           {
+            alert("Input Error, not a valid number");
+            return;
+           }
+
+
+            document.getElementById("EuroValue").innerHTML = DollarAmount*EuroRate;
+            document.getElementById("CanValue").innerHTML = DollarAmount*CanRate;
+            document.getElementById("HKValue").innerHTML = DollarAmount*HKRate;
+            document.getElementById("YenValue").innerHTML = DollarAmount*YenRate;
+            document.getElementById("PesoValue").innerHTML = DollarAmount*PesoRate;
+
+        }
+
+
+
+    </script>
+</head>
+	
+<body>
+    <h2>Homework 2, Extra credit</h2>
+<br><br><br>
+
+<section class="body">
+<form name="myform">
+    <table>
+        <tr>
+            <th>Currency</th>
+            <th>Rate</th>
+            <th>Value</th>
+
+        </tr>
+        <tr>
+            <td>Euro</td>
+            <td name="EuroRate" id="EuroRate">0.84</td>
+            <td name="EuroValue" id="EuroValue"></td>
+        </tr>
+        <tr>
+            <td>Canadian Dollar</td>
+            <td name="CanRate" id="CanRate">1.23</td>
+            <td name="CanValue" id="CanValue"></td>
+        </tr>
+        <tr>
+            <td>Hong Kong Dollar</td>
+            <td name="HKRate" id="HKRate">7.76</td>
+            <td name="HKValue" id="HKValue"></td>
+        </tr>
+        <tr>
+            <td>Japanese Yen</td>
+            <td name="YenRate" id="YenRate">110.80</td>
+            <td name="YenValue" id="YenValue"></td>
+        </tr>
+        <tr>
+            <td>Mexican Peso</td>
+            <td name="PesoRate" id="PesoRate">19.82</td>
+            <td name="PesoValue" id="PesoValue"></td>
+        </tr>
+        <tr>
+            <td>Enter Amount of U.S. Dollars</td>
+            <td><input type="text" name="DollarAmount" id="DollarAmount" placeholder="Input dollar amount"></td>
+        </tr>
+    </table>
+
+</form>
+</section>
+
+    <input type="button" onclick="process()" value="SUBMIT">
+
+    <h3>
+        <a href="../hw2.html">Back to HW2</a>
+    </h3>
+
+</body>
+</html>
