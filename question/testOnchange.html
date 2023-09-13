@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+
+    // global variables keep track of how many time onchange event is triggered without reloading.
+    var z = 0;
+     function process(answer) {
+        z = z+1;
+        document.getElementById("outputArea").innerHTML = "input value " + answer + 
+        " . onchange function triggered for the  " + z + " time without reload" ;
+     }
+    </script>
+
+</head>
+<body>
+    
+    <h1>understanding tab vs enter for onchange event </h1>
+
+    <form name="myform" id="myform">
+        <p>when you put in something and then hit enter, the whole form reloads and the URL actually changes.  
+            With Tab, it doesn't.</p>
+        <p>enter a number and then tab, then enter a differet number and then enter</p>
+            <input type="text" id="answer1" name="answer1" onchange="process(this.value)"></p>
+        <br>
+        <textarea rows="4" cols="60" 
+            id="outputArea" readonly placeholder="Look at the URL, whole form just reloaded."></textarea>
+    </form>
+        
+</body>
+
+</footer>
+</html>
