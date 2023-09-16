@@ -31,6 +31,7 @@
             let sellerName = myform.SellerName.value;
             let numItem = [];
 
+            clearErrorMsg();
             numItem[0] = getInteger(myform.Item1.value);
             numItem[1] = getInteger(myform.Item2.value);
             numItem[2] = getInteger(myform.Item3.value);
@@ -38,11 +39,13 @@
 
             // Check for illegal input but don't clear the form for better usability.
             if (numItem[0] == null || numItem[1] == null || numItem[2] == null || numItem[3] == null) {
-                alert("You can only input a positive integer for quantity sold.");
+                document.getElementById("errorMsg").innerHTML = 
+                    "<strong>You can only input a positive integer for quantity sold.</strong>";
                 return;
             }
             if (sellerName == null || sellerName == "") {
-                alert("You must set Seller Name before we can compute his/her salary.");
+                document.getElementById("errorMsg").innerHTML =
+                    "<strong>You must set Seller Name before we can compute his/her salary.</strong>";
                 return;
             }
 
@@ -78,6 +81,7 @@
         function clearIt() {
             // the input fields are in the form and clears automatically by input type reset.
             // the output fields need to be clear manually.
+            clearErrorMsg();
             document.getElementById("Item1Qty").innerText = 
             document.getElementById("Item1Total$").innerText = null;
             document.getElementById("Item2Qty").innerText = 
@@ -90,6 +94,11 @@
             document.getElementById("TotalWeeklyEarnings").innerText = null;
 
             document.getElementById("SellerName").focus();
+        }
+
+        function clearErrorMsg()
+        {
+            document.getElementById("errorMsg").innerHTML = "";
         }
         
     </script>
@@ -117,6 +126,10 @@
 
         <input type="button" onclick="calcSalary()" value="SUBMIT">
         <input type="reset" onclick="clearIt()" value ="CLEAR">
+        
+        <p><br><br>
+        <div id="errorMsg"></div>
+        </p>
 
     </form>
     <br>
