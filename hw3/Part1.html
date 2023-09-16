@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Part1 of HW3 Student Grades">
+	<meta name="author" content="Siuling Ku">
+    <title>Student Grade Calculation</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <script>
+        function clearIt()
+        {
+            // clear up everything.  For some reasons, I don't need to assign a name attribute.
+            myform.HW.value = null;
+            myform.MidTerm.value = null;
+            myform.Final.value = null;
+            myform.participation.value = null;
+        
+            document.getElementById("result").innerHTML = "Grade will be shown here.";
+  
+        }
+
+        //return true if num is a number between 0-100
+        function valid(num)
+        {
+            return !Number.isNaN(num) && (num >= 0) && (num <= 100);
+        }
+
+        function calcGrade() {
+            let HW = parseFloat(myform.HW.value);
+            let MidTerm = parseFloat(myform.MidTerm.value);
+            let Final = parseFloat(myform.Final.value);
+            let participation = parseFloat(myform.participation.value);
+            let result = null;
+
+            // validate input
+            if (!valid(HW) || !valid(MidTerm) || !valid(Final) || !valid(participation))
+            {
+                result = "At least one of the input value is not a number OR not in range of 0-100";
+            }
+            else
+            {
+                // final average = (.5 * hwAvg) + (.2 * midExam) + (.2 * finalExam) + (.1 * participation)
+                let finalScore = (.5 * HW) + (.2 * MidTerm) + (.2 * Final) + (.1 * participation);
+                let finalGrade = null;
+                const failMsg ="<br><strong>Student must retake the course.</strong>";
+
+                if (finalScore < 60)
+                    finalGrade = "<strong style=\"color:red\">F</strong>." + failMsg;
+                else if (finalScore < 70)
+                    finalGrade = "D." + failMsg;
+                else if (finalScore < 80)
+                    finalGrade = "C.";
+                else if (finalScore < 90)
+                    finalGrade = "B.";
+                else
+                    finalGrade = "A.";
+
+                result = "Final Score = " +
+                    finalScore.toFixed(0) + ". Final Grade = " + finalGrade;
+        
+            }
+            document.getElementById("result").innerHTML = result;
+
+        }
+    </script>
+</head>
+<body>
+    <h1>Student Grades</h1>
+
+    <p>
+        Using Homework Average, Mid-term score, Final score and participation, calculate student grade.
+    </p>
+     <br><br>
+        
+    <form id="myform" name="myform">
+        <p>
+        <label for="HW">Homework Average : </label>
+        <input type="number" name="HW" id="HW" autofocus>
+        </p>
+        <p>
+        <label  for="MidTerm">Mid-Term Exam Score : </label>
+        <input type="number" id="MidTerm">
+        </p>
+        <p>
+        <label  for="Final">Final Exam Score :</label>
+        <input type="number" id="Final">
+        </p>
+        <p>
+        <label  for="participation">Participation : </label>
+        <input type="number" id="participation">
+        </p>
+    </form>
+
+
+    <br><br>
+    
+
+    <div class="leftDiv" id="result" type="text" readonly>Grade will be shown here.  
+    </div>
+    <br>
+    
+    <br><em>Click Submit to get result</em>
+    <input type="button" onclick="calcGrade()" value="SUBMIT">
+    <input type="reset" onclick="clearIt()" value ="CLEAR">
+
+    <br><br><br>
+    Points/Percentage to Letter Grade conversion.
+    <br>
+    <table>
+        <tr><th>Percentage</th><th>Letter Grade</th></tr>
+        <tr><td>90-100</td><td>A</td></tr>
+        <tr><td>80-89</td><td>B</td></tr>
+        <tr><td>70-79</td><td>C</td></tr>
+        <tr><td>60-69</td><td>D</td></tr>
+        <tr><td>0-59</td><td>F</td></tr>
+    </table>
+</body>
+<footer>
+    <h3>
+        <a href="../hw3.html">Back to HW3</a>
+    </h3>
+    
+</footer>
+</html>

@@ -1,0 +1,41 @@
+/* boilerplate styles */
+
+td {
+    border: 1px solid black;
+    border-collapse: separate;
+    text-align: center;
+  }
+
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+form  { display: table }
+p     { display: table-row;  }
+label { display: table-cell; }
+input { display: table-cell; } 
+
+.leftDiv {
+    display: inline-block;
+    border: 5px outset black;
+    padding: 10px;
+    background-color: lightblue;    
+    text-align: left;
+  }
+
+  .blueBorder {
+    border: 5px outset blue;
+  }
+
+  .centerGold {
+      width: 600px; margin: 0px auto; background-color: gold; padding: 15px;
+      border: 5px outset blue;
+    }
+

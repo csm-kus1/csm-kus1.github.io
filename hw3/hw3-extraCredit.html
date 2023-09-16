@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Extra Credit of HW3 Math Game">
+	<meta name="author" content="Siuling Ku">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>Math Game</title>
+
+    <script>
+    var X, Y; // The two number to be multiplied 
+    var numCorrect = 0; // number of correct answers
+    var numTries = 0;   // total number of questions generated
+
+    function clearFields() {
+   
+     //   document.getElementById("answer").innerText = "";
+        myform.answer.value = "";
+        document.getElementById("answer").focus();
+  
+        document.getElementById("outputArea").innerText = "";
+        document.getElementById("newButtons").innerHTML = "";
+
+    }
+    function generateXY(clearForm) {
+
+        X = Math.floor(Math.random()*10);
+        Y = Math.floor(Math.random()*10);
+        document.getElementById("x").innerText = X;
+        document.getElementById("y").innerText = Y;
+
+        if (clearForm)
+            clearFields();
+    }
+
+    function goodbye() {
+
+        document.getElementById("outputArea").innerText =
+         "Goodbye!  You answered " + numCorrect + " out of " + numTries + " questions correctly.";
+
+    }
+    function checkAnswer() {
+        let answer = myform.answer.value;
+        let msg;
+        console.log("answer is " + answer);
+
+        if (answer == null || answer == "") {
+            msg = "You did not enter an answer.";
+        }
+        else {
+            numTries ++;
+            parsed_answer = parseFloat(answer);
+            if (Number.isNaN(parsed_answer) || parsed_answer != X*Y) {
+                msg = "Sorry, " + answer + " is incorrect.  Correct answer is " + X*Y;
+            }
+            else {
+                numCorrect++;
+                msg = "Correct!!"
+            }
+        }
+
+        document.getElementById("outputArea").innerHTML = msg;
+
+        // now generate continue button
+        msg = "<br><br><p>Do you want another question?</p><br>";
+        msg += "<input type=\"button\" onclick=\"generateXY(true)\" value=\"YES\">    ";
+        msg += "<input type=\"button\" onclick=\"goodbye()\" value=\"NO\">";
+
+        document.getElementById("newButtons").innerHTML = msg;
+
+    }
+
+
+    </script>
+</head>
+
+<body onload="generateXY(false)">
+
+<section class="centerGold">    
+
+    <h1>Homework 3 - Extra Credit</h1>
+    <h2> Math game for elementary school student.</h2>
+
+    <form name="myform" id="myform" onsubmit="return false;">
+
+        <p>How much is <span id="x"></span> times <span id="y"></span> ?"</p>
+        <p>Your Answer: <input type="text" id="answer" name="answer" onchange="checkAnswer()"></p>
+
+        <br>
+
+        <textarea rows="4" cols="60" id="outputArea" readonly></textarea>
+
+    </form>
+
+    <div id="newButtons"></div>
+
+    </section> 
+
+<footer>
+    <h3>
+        <a href="../hw3.html">Back to HW3</a>
+    </h3>
+    
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Part2 of HW3 Sales Salary">
+	<meta name="author" content="Siuling Ku">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>Sales salary computation</title>
+
+    <script>
+
+        // return null if input is illegal (non a positive integer).  
+        // field left blank is assumed to be 0 for better usability.
+        function getInteger(input) {
+
+            if (input == null || input == "") 
+                return 0;  // if user left any quantity unspecified, assume 0;
+          
+            let v=parseFloat(input);
+
+            if (Number.isNaN(v) || (v % 1) != 0 || v < 0) // not a positive whole number
+                return null;
+            else
+                return v;
+        }
+
+        function calcSalary() {
+
+            let error = false;
+            let sellerName = myform.SellerName.value;
+            let numItem = [];
+
+            numItem[0] = getInteger(myform.Item1.value);
+            numItem[1] = getInteger(myform.Item2.value);
+            numItem[2] = getInteger(myform.Item3.value);
+            numItem[3] = getInteger(myform.Item4.value);
+
+            // Check for illegal input but don't clear the form for better usability.
+            if (numItem[0] == null || numItem[1] == null || numItem[2] == null || numItem[3] == null) {
+                alert("You can only input a positive integer for quantity sold.");
+                return;
+            }
+            if (sellerName == null || sellerName == "") {
+                alert("You must set Seller Name before we can compute his/her salary.");
+                return;
+            }
+
+            document.getElementById("Item1Qty").innerText = numItem[0];
+            document.getElementById("Item2Qty").innerText = numItem[1];
+            document.getElementById("Item3Qty").innerText = numItem[2];
+            document.getElementById("Item4Qty").innerText = numItem[3];
+
+            // too lazy to parse the HTML in the form, just duplicate the price
+            const itemPrice = [20.99, 12.75, 9.95, 35.89 ];
+
+            let totalSub$ = [];
+            let totalSold = 0;
+            let grossSales = 0;
+            for (let i=0; i<4; i++)
+            {
+                totalSub$[i] = itemPrice[i] * numItem[i];
+                grossSales += totalSub$[i];
+                totalSold += numItem[i];
+            }
+            let totalSalary = grossSales*0.09 + 250;
+            
+            document.getElementById("Item1Total$").innerText = "$" + totalSub$[0].toFixed(2);
+            document.getElementById("Item2Total$").innerText = "$" + totalSub$[1].toFixed(2);
+            document.getElementById("Item3Total$").innerText = "$" + totalSub$[2].toFixed(2);
+            document.getElementById("Item4Total$").innerText = "$" + totalSub$[3].toFixed(2);
+
+            document.getElementById("TotalAmtSold").innerText = totalSold;
+            document.getElementById("TotalWeeklyEarnings").innerText = "$" + totalSalary.toFixed(2);
+
+        }
+
+        function clearIt() {
+            // the input fields are in the form and clears automatically by input type reset.
+            // the output fields need to be clear manually.
+            document.getElementById("Item1Qty").innerText = 
+            document.getElementById("Item1Total$").innerText = null;
+            document.getElementById("Item2Qty").innerText = 
+            document.getElementById("Item2Total$").innerText = null;
+            document.getElementById("Item3Qty").innerText = 
+            document.getElementById("Item3Total$").innerText = null;
+            document.getElementById("Item4Qty").innerText = 
+            document.getElementById("Item4Total$").innerText = null;
+            document.getElementById("TotalAmtSold").innerText = 
+            document.getElementById("TotalWeeklyEarnings").innerText = null;
+
+            document.getElementById("SellerName").focus();
+        }
+        
+    </script>
+</head>
+<body class="blueBorder">
+    <h1>Homework 3 - Part 2</h1>
+    <h2> Calculate Sales person's salary.</h2>
+ 
+    <form id="myform" name="myform">
+        <p> 
+            <label for="SellerName">Seller's Name : </label>
+            <input type="text" name="SellerName" id="SellerName" autofocus>
+        </p>
+        <br>
+        <br>
+        <p>For each item type the quantity sold by the seller</p><br>
+        <p><label for="Item1">Item 1: </label>
+            <input type="number" name="Item1" id="Item1"><br><br></p>
+        <p><label for="Item21">Item 2: </label>
+            <input type="number" name="Item2" id="Item2"><br><br></p>
+        <p><label for="Item3">Item 3: </label>
+            <input type="number" name="Item3" id="Item3"><br><br></p>
+        <p><label for="Item4">Item 4: </label>
+            <input type="number" name="Item4" id="Item4"><br><br></p>
+
+        <input type="button" onclick="calcSalary()" value="SUBMIT">
+        <input type="reset" onclick="clearIt()" value ="CLEAR">
+
+    </form>
+    <br>
+    <table id="mytable" width="80%">
+        <colgroup>
+            <col span="2" width="15%">
+            <col span="2" width="35%">
+        </colgroup>
+        <tr><th>Item#</th><th>Price</th><th>Qty Sold</th><th>Total $</th></tr>
+        <tr><td>1</td><td>$20.99</td><td id="Item1Qty"></td><td id="Item1Total$"></td></tr>
+        <tr><td>2</td><td>$12.75</td><td id="Item2Qty"></td><td id="Item2Total$"></td></tr>
+        <tr><td>3</td><td>$ 9.95</td><td id="Item3Qty"></td><td id="Item3Total$"></td></tr>
+        <tr><td>4</td><td>$35.89</td><td id="Item4Qty"></td><td id="Item4Total$"></td></tr>
+        <tr><td colspan="3">Total Amount Sold</td><td id="TotalAmtSold" ></td></tr>
+        <tr><td colspan="3">Total Weekly Earnings</td><td id="TotalWeeklyEarnings"></td></tr>
+
+
+    </table>
+
+</body>
+<footer>
+    <h3>
+        <a href="../hw3.html">Back to HW3</a>
+    </h3>
+    
+</footer>
+</html>
