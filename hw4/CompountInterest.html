@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Part2 of HW4, Calculate Compount Interest">
+	<meta name="author" content="Siuling Ku">
+    <title>Compound Interest</title>
+
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 75%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+          }
+        th {
+             background-color: black;
+             color: white
+            }
+         tr:nth-child(even) {
+            background-color: yellow;
+         }
+         tr:nth-child(odd) {
+            background-color: yellowgreen;
+         }
+
+     </style>
+
+</head>
+<body>
+
+    <h1>Learn about Compount Interest</h1>
+
+    <script>
+        let r, year, amount;
+        const Prin = 1000;
+        const MaxYear = 5; // max number of years to show
+        const MinR = 5; // minimum interest rate in %
+        const MaxR = 7; // maximum interest rate in %
+        o = {style: "currency", currency: "USD"};
+
+        document.write("<h3>If you deposite $"+Prin+", see the amount of deposit by year end with different interest rates.</h3>");
+        for (r = MinR; r <= MaxR; r++) {
+
+            document.write("<table> <tr>");
+            document.write("<th> End of Year </th>");
+            document.write("<th> Amount on deposit</th>");
+            document.write("<th> Interest Rate </th>");
+            document.write("</tr>");
+
+            for (year = 1; year <= MaxYear; year++) {
+                amount = Prin* Math.pow(1+(r/100), year);
+                document.write("<tr>");
+                document.write("<td>" + year + "</td>");
+                document.write("<td>" + amount.toLocaleString("en", o) + "</td>");
+                document.write("<td>"+r+"% </td>");
+                document.write("</tr>");
+
+            }
+            document.write("<br><br>");
+
+        }
+        document.write("</table>");
+    </script>
+
+
+    <footer>
+        <h3>
+            <a href="../hw4.html">Back to HW4</a>
+        </h3>
+    
+    </footer>
+</body>
+</html>

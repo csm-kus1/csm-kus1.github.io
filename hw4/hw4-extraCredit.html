@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Extra Credit for HW4, output square outline">
+	<meta name="author" content="Siuling Ku">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+    </style>
+    <title>Square outline</title>
+
+    <script>
+        // return an HTML string that can be written to a div tag
+        function printSquare() {
+           
+            let sizeOfSquare = parseInput(myform.SizeOfSquare.value);
+            let outputArea = document.getElementById("output");
+
+            // check input
+            if (sizeOfSquare == null) {
+                outputArea.innerHTML = "<strong>ERROR:  Input must be integer between 2 to 10!</strong>";
+                return;
+            }
+
+            output = "<pre>"; 
+            //first row, all filled with "*"
+            for (let i = 0; i < sizeOfSquare; i++)
+                output += "* ";
+            output +="<br>";
+
+            for (let row = 1; row < sizeOfSquare-1; row++)
+            {
+                output += "* "
+                for (space = 1; space < sizeOfSquare-1; space++)
+                    output += "  ";
+                output += "*</br>";
+            }
+            //last row
+            for (let i = 0; i < sizeOfSquare; i++)
+                output += "* ";
+            output += "</pre>";
+
+            outputArea.innerHTML = output;
+
+        }
+
+        // returns an interger if input is an interger between 2 and 10, else return null
+        function parseInput(input) {
+
+
+            if (input == null || input == "") {
+                return null;
+            }
+          
+            let v=parseFloat(input);
+
+            if (Number.isNaN(v) || (v % 1) != 0 || v < 2 || v > 10 ) // not a positive whole number between 2 and 10
+                return null;
+            else
+                return v;
+
+        }
+
+        function clearIt() {
+            myform.SizeOfSquare.value = "";
+            document.getElementById("output").innerText = null;
+
+        }
+
+    </script>
+</head>
+<body">
+
+<article style="flex-grow: 1">
+<h1>Homework 4 - Extra Credit</h1>
+<h2> Print a hollow square.</h2>
+
+<form name="myform" id="myform" onsubmit="return false;">
+    <p> 
+        <label for="SizeOfSquare">Size Of Square : </label>
+        <input type="number" name="SizeOfSquare" id="SizeOfSquare" autofocus required>
+    </p>
+    <input type="button" onclick="printSquare()" value="GENERATE SQUARE">
+    <input type="reset" onclick="clearIt()" value ="CLEAR">
+</form>
+<br>
+<br>
+
+<div id="output"></div>      
+</article>
+<footer>
+    <h3>
+        <a href="../hw4.html">Back to HW4</a>
+    </h3>
+
+</footer>
+</body>
+
+
+
+</html>

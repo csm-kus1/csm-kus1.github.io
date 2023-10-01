@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Part1 of HW4, Looping statements">
+	<meta name="author" content="Siuling Ku">
+    <title>Looping Statements</title>
+ 
+</head>
+<body>
+    <h1>Part 1, Looping statements</h1>
+
+    <pre>
+    <script>
+        let i, product = 1, sum = 0;
+        let ProductMsg = "The result of ";
+        let SumMsg = "The result of ";
+        let firstTime = true;
+
+        document.write("<h2>Using For Loop</h2>");
+        document.write("Calculate the product and sum of every fourth integer from 5 to 25 inclusive.");
+        for (i = 5; i <= 25; i +=4)
+        {
+            if (firstTime)
+            {
+                ProductMsg += i;
+                SumMsg += i;
+                firstTime = false;
+            }
+            else
+            {
+                ProductMsg += " * " + i;
+                SumMsg += " + " + i;
+            }
+            product = product * i;
+            sum = sum + i;
+        }
+        ProductMsg += " is " + product.toLocaleString();
+        SumMsg += " is " + sum.toLocaleString();
+        document.write("<p>" + ProductMsg + "</p>");
+        document.write("<p>" + SumMsg + "</p>");
+
+        document.write("<h2>Using while/do Loop</h2>");
+        document.write("Calculate the product and sum of every third integer from 3 to 18 inclusive");
+        ProductMsg = "The result of ";
+        SumMsg = "The result of ";
+        i = 3;
+        product = 1;
+        sum = 0;
+        firstTime = true;
+        do {
+            if (firstTime) {
+                ProductMsg += i;
+                SumMsg += i;
+                firstTime = false;
+            }
+            else {
+                ProductMsg += " * " + i;
+                SumMsg += " + " + i;
+            }
+            product = product * i;
+            sum = sum + i;
+            i += 3;
+
+        } while (i <= 18);
+        ProductMsg += " is " + product.toLocaleString();
+        SumMsg += " is " + sum.toLocaleString();
+        document.write("<p>" + ProductMsg + "</p>");
+        document.write("<p>" + SumMsg + "</p>");
+
+
+
+    </script>
+</pre>
+
+<footer>
+    <h3>
+        <a href="../hw4.html">Back to HW4</a>
+    </h3>
+
+</footer>
+</body>
+</html>
