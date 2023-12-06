@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="part2 of Homework7">
+	<meta name="author" content="Siuling Ku">
+    <title>HW7 Cookies</title>
+
+    <script>
+        function process()
+        {
+            var name = document.getElementById("name").value;
+            var username = document.getElementById("username").value;
+
+            document.cookie = "myName="+name+"; path=/";
+            document.cookie = "myUsername="+username+"; path=/";
+            // console.log("cookie is " + document.cookie + ":" +  decodeURIComponent(document.cookie));
+        }
+
+
+    function getCookie(cName) {
+        var name = cName + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        console.log("decodedCookie is " + decodedCookie);
+
+        var ca = decodedCookie.split(';');
+        var cValue;
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+             cValue= c.substring(name.length, c.length);
+             console.log("Cookie " + cName + " is " + cValue);
+             return cValue;
+            }
+        }
+
+
+        return "";
+    }
+
+    </script>
+</head>
+<body>
+
+    <h1 style="color:red">JavaScript Cookie</h1>
+    
+    <script>
+        var name = getCookie("myName");
+        var userName = getCookie("myUsername");
+        if (name != "" && userName != "")
+        {
+            document.write("Welcome Back " + name + ", your username is " +userName);
+        }
+        else
+        {
+            document.write("You haven't input a name and username yet.\n");
+            document.write("When you return to this page while keeping your browser opened,");
+            document.write("your name and username will be displayed.");
+
+            document.write('<form onsubmit = "return false">');
+            document.write('<p><label for="name">Enter your name</label>: </p>');
+            document.write('<input type="text" name="name" id="name" size="40">');
+            document.write('<p><label for="username">Enter your username</label>: </p>');
+            document.write('<input type="text" name="username" id="username" size="40">');
+            
+            document.write('<br><br><input type = "button" value= "Register Cookie"');
+            document.write('onClick="process()">');
+            document.write('</form>');
+
+        }
+
+    </script>
+
+
+
+</body>
+</html>

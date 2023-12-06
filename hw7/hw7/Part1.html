@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="part1 of Homework7">
+	<meta name="author" content="Siuling Ku">
+    <title>HW7 Part 1</title>
+
+    <script>
+        function setColor(color) {
+            var area = document.getElementById("dynamicStyle");
+            area.style.color = color;
+        }
+        function setStyle() {
+            var area = document.getElementById("dynamicStyle");
+
+            if (document.getElementById("underline").checked)
+                area.style.textDecoration = "underline";
+            else
+                area.style.textDecoration = "none";
+
+            if (document.getElementById("bold").checked)
+                area.style.fontWeight = "bold";
+            else
+                area.style.fontWeight = "normal";
+
+            if (document.getElementById("italic").checked)
+                area.style.fontStyle = "italic";
+            else
+                area.style.fontStyle = "normal";
+        }
+
+        function setSize()
+        {
+            var area = document.getElementById("dynamicStyle");
+            var size = document.getElementById("fontSize").value;
+            area.style.fontSize = size;
+        }
+
+
+    </script>
+</head>
+<body>
+
+    <h1>Styling using JavaScript</h1>
+    <main id="dynamicStyle">
+        <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tortor vitae purus faucibus ornare suspendisse sed. Ultricies mi eget mauris pharetra et. Sit amet facilisis magna etiam tempor orci eu lobortis. Auctor urna nunc id cursus. Vitae proin sagittis nisl rhoncus mattis rhoncus. Viverra vitae congue eu consequat ac felis donec et odio. In pellentesque massa placerat duis ultricies lacus sed. Id aliquet risus feugiat in ante metus dictum at. Tortor dignissim convallis aenean et tortor at risus viverra. Purus faucibus ornare suspendisse sed nisi. Turpis nunc eget lorem dolor sed viverra ipsum.
+        </p>
+        <p>
+        Venenatis a condimentum vitae sapien. Sit amet venenatis urna cursus eget nunc scelerisque viverra mauris. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Integer vitae justo eget magna. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Tincidunt eget nullam non nisi. Quis blandit turpis cursus in hac habitasse. Id leo in vitae turpis massa sed elementum. Ligula ullamcorper malesuada proin libero. In massa tempor nec feugiat. Viverra nam libero justo laoreet sit amet cursus. Fermentum posuere urna nec tincidunt.
+        </p>
+        <p>
+        Viverra aliquet eget sit amet. Nec feugiat in fermentum posuere. Urna nec tincidunt praesent semper feugiat nibh. Id semper risus in hendrerit gravida rutrum. Eget nunc scelerisque viverra mauris in aliquam. Euismod in pellentesque massa placerat duis ultricies lacus. Amet facilisis magna etiam tempor orci eu. Euismod in pellentesque massa placerat duis. A diam maecenas sed enim ut sem viverra. Posuere lorem ipsum dolor sit amet consectetur adipiscing. Pellentesque dignissim enim sit amet venenatis urna cursus.
+        </p>
+    </main>
+
+    <form>
+    Setting Text color to 
+    <input type="radio" name="color" id="red" onClick="setColor('red');"><label for="red">Red</label>
+    <input type="radio" name="color" id="blue" onClick="setColor('blue');"><label for="blue">Blue</label>
+    <input type="radio" name="color" id="green" onClick="setColor('green');"><label for="green">Green</label>
+
+    <br>
+    Setting Style to 
+    <input type="checkbox" name="underline" id="underline" onClick="setStyle()"><label for="underline">Underline</label>
+    <input type="checkbox" name="bold" id="bold" onClick="setStyle()"><label for="bold">Bold</label>
+    <input type="checkbox" name="italic" id="italic" onClick="setStyle()"><label for="Italic">Italic</label>
+   
+    <br>
+    Setting font size to
+    <select id="fontSize" name="fontSize" id="fontSize" onClick="setSize()">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+    </select>
+</form>
+
+<h3>
+    <a href="../hw7.html">Back to HW7</a>
+</h3>
+
+</body>
+</html>
