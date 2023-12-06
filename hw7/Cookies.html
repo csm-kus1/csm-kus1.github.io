@@ -12,19 +12,16 @@
         {
             var name = document.getElementById("name").value;
             var username = document.getElementById("username").value;
-            var cookieString = "myName="+name+";"+"myUsername="+username+";path=/";
-
-            console.log("name is " + name);
-            console.log("username is " + username);
-            console.log("cookieString is " + cookieString);
 
 
             if (name == "" || username == "")
             {
                 document.getElementById("Error").value = "Please input both name and username\n";
             }
-            document.cookie = "myName="+name+";path=/";
-            document.cookie = "myUsername="+username+";path=/";
+            console.log("myName="+name+"; path=/");
+            console.log("myUsername="+username+"; path=/");
+            document.cookie = "myName="+name+"; path=/";
+            document.cookie = "myUsername="+username+"; path=/";
             console.log("cookie is " + document.cookie + ":" +  decodeURIComponent(document.cookie));
         }
 
