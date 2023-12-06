@@ -24,7 +24,7 @@
                 document.getElementById("Error").value = "Please input both name and username\n";
             }
             document.cookie = "myName="+name+";path=/";
-            document.cookie = "myUsername"+username+";path=/";
+            document.cookie = "myUsername="+username+";path=/";
             console.log("cookie is " + document.cookie + ":" +  decodeURIComponent(document.cookie));
         }
 
