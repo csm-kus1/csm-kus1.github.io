@@ -17,6 +17,14 @@ th,td {
 <br><br>
 <table id="demo"></table>
 
+<h2>What happened?</h2>
+<p>When you click the butten "Get CD collection", a function called loadDoc() is called.
+  <br>This loadDoc() function created a XMLHttpRequest object to GET the file "cd_catalog.xml" in the same directory as this HTML file.
+  <br>When the XMLHttpRequest is finished loading, the onload event will trigger.
+  <br>When the onload even triggers, myfunctiuon is called to parse the xml file, and get an array of CDs.
+  <br>Then we format a table using the ARTIST and TITLE field of each CD.
+</p>
+
 <script>
 function loadDoc() {
   const xhttp = new XMLHttpRequest();
@@ -26,6 +34,7 @@ function loadDoc() {
   xhttp.open("GET", "cd_catalog.xml");
   xhttp.send();
 }
+
 function myFunction(xml) {
   const xmlDoc = xml.responseXML;
   const x = xmlDoc.getElementsByTagName("CD");
@@ -37,6 +46,8 @@ function myFunction(xml) {
     x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
     "</td></tr>";
   }
+
+
   document.getElementById("demo").innerHTML = table;
 }
 </script>
