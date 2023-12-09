@@ -16,20 +16,16 @@ th,td {
 <button type="button" onclick="loadDoc()">Get CD collection</button>
 <br><br>
 <table id="demo"></table>
+<div id="explanation"></div>
 
-<h2>What happened?</h2>
-<p>When you click the butten "Get CD collection", a function called loadDoc() is called.
-  <br>This loadDoc() function created a XMLHttpRequest object to GET the file "cd_catalog.xml" in the same directory as this HTML file.
-  <br>When the XMLHttpRequest is finished loading, the onload event will trigger.
-  <br>When the onload even triggers, myfunctiuon is called to parse the xml file, and get an array of CDs.
-  <br>Then we format a table using the ARTIST and TITLE field of each CD.
-</p>
+
 
 <script>
 function loadDoc() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     myFunction(this);
+    explain();
   }
   xhttp.open("GET", "cd_catalog.xml");
   xhttp.send();
@@ -47,9 +43,17 @@ function myFunction(xml) {
     "</td></tr>";
   }
 
+  function explain () {
+
+  let explanation = "<h2>What happened?</h2><p>When you click the butten 'Get CD collection', a function called loadDoc() is called.";
+  explanation += "<br>This loadDoc() function created a XMLHttpRequest object to GET the file 'cd_catalog.xml' in the same directory as this HTML file.";
+  explanation += "<br>When the XMLHttpRequest is finished loading, the onload event will trigger.";
+  explanation += "<br>When the onload even triggers, myfunctiuon is called to parse the xml file, and get an array of CDs.";
+  explanation += "<br>Then we format a table using the ARTIST and TITLE field of each CD.fff</p>";
 
   document.getElementById("demo").innerHTML = table;
-}
+  document.getElementById("explanation").innerText = explanation;
+  }
 </script>
 
 <h2>
