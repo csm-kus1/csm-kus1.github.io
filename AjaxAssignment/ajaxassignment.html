@@ -25,7 +25,6 @@ function loadDoc() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     myFunction(this);
-    explain();
   }
   xhttp.open("GET", "cd_catalog.xml");
   xhttp.send();
@@ -43,7 +42,6 @@ function myFunction(xml) {
     "</td></tr>";
   }
 
-  function explain () {
 
   let explanation = "<h2>What happened?</h2><p>When you click the butten 'Get CD collection', a function called loadDoc() is called.";
   explanation += "<br>This loadDoc() function created a XMLHttpRequest object to GET the file 'cd_catalog.xml' in the same directory as this HTML file.";
