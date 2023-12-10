@@ -71,9 +71,11 @@ function showCatFact(xmlhttp) {
     document.getElementById("funCatFact").innerHTML = table;
 
     let explain = "<h2>How to get this list of fun Cat Fact?</h2>";
-    explain += "When you click the 'Get a list of fun facts about cat!' button, "<br>
-    explain += "we hit the web endpoint https://cat-fact.herokuapp.com/fact, which returns a list of fun facts."<br>
-    explain += "then we simply parse and format the response and show it in a table."
+    explain += "When you click the 'Get a list of fun facts about cat!' button, <br>";
+    explain += "we hit the web endpoint https://cat-fact.herokuapp.com/fact, which returns a list of fun facts.<br>";
+    explain += "then we simply parse and format the response and show it in a table.";
+
+    document.getElementById("explainCatFact").innerHTML = explain;
 
   } else {
     document.getElementById("funCatFact").innerHTML = "ERROR: HTTP return status = " + xmlhttp.status;
