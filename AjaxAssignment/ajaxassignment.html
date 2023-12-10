@@ -35,7 +35,7 @@ See demo below.
 </p>
 
 <button type="button" onclick="getCatFact()">Get a cat fun fact</button>
-<div id="funCatFact"><</div>
+<div id="funCatFact"></div>
 
 <script>
 function getCatFact() {
@@ -60,7 +60,7 @@ function showCatFact(xmlhttp) {
     var catFact = JSON.parse(json);  // here we are turning the string JSON into a native JavaScript object
     console.log(catFact); // see what it looks like.
 
-    document.getElementById("funCatFact").innerHTML = "<h2>" + catFact.text "</h2>";
+    document.getElementById("funCatFact").innerHTML = "<h2>" + catFact.text + "</h2>";
   } else {
     document.getElementById("funCatFact").innerHTML = "ERROR: HTTP return status = " + xmlhttp.status;
   }
