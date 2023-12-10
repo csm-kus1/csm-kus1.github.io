@@ -27,7 +27,7 @@ th,td {
 <h3>I have chosen to use the <a href="https://apilist.fun/api/cat-facts">Cat-facts API.</a></h3>
 <p>
 This is the <a href="https://cat-fact.herokuapp.com">Root endpoint URL</a>(https://cat-fact.herokuapp.com)<br>
-Use the path <a href="https://cat-fact.herokuapp.com/facts">/facts</a> to return a list of JSON objects. <br>
+Use the path <a href="https://cat-fact.herokuapp.com/facts">/facts</a> to return an Array of JSON objects. <br>
 Each JSON object has a fun fact about cats. <br>
 Use the value of the "text" field to see the fun fact.
 This site is free and has no authentication key necessary. <br>
@@ -35,7 +35,7 @@ See demo below.
 </p>
 
 <button type="button" onclick="getCatFact()">Get a cat fun fact</button>
-<div id="funCatFact"></div>
+<table id="funCatFact"></table>
 
 <script>
 function getCatFact() {
@@ -58,9 +58,14 @@ function showCatFact(xmlhttp) {
     // show the user details
 	  var json = xmlhttp.responseText;   // the responseText field is where the data is stored 
     var catFact = JSON.parse(json);  // here we are turning the string JSON into a native JavaScript object
-    console.log(catFact); // see what it looks like.
+    console.log(catFact); // see what it looks like.\
 
-    document.getElementById("funCatFact").innerHTML = "<h2>" + catFact.text + "</h2>";
+    let table="<tr><th>Number</th><th>Fun Fact</th></tr>";
+    for (let i=0; i < catFact.length; i++)
+    {
+      table += "<tr><td>" + i + "</td><td>" + catFact[i].text + "</td></tr>"
+    }
+    document.getElementById("funCatFact").innerHTML = table;
   } else {
     document.getElementById("funCatFact").innerHTML = "ERROR: HTTP return status = " + xmlhttp.status;
   }
