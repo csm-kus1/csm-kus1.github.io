@@ -23,7 +23,7 @@ th,td {
 <div id="explanation"></div>
 <br><br>
 
-<h2>Rest API</h2>
+<h2>Extra Credit - Rest API</h2>
 <h3>I have chosen to use the <a href="https://apilist.fun/api/cat-facts">Cat-facts API.</a></h3>
 <p>
 This is the <a href="https://cat-fact.herokuapp.com">Root endpoint URL</a>(https://cat-fact.herokuapp.com)<br>
@@ -31,11 +31,14 @@ Use the path <a href="https://cat-fact.herokuapp.com/facts">/facts</a> to return
 Each JSON object has a fun fact about cats. <br>
 Use the value of the "text" field to see the fun fact.
 This site is free and has no authentication key necessary. <br>
+You can even add more cat facts to the database if you wish to - <br>
+but for that, you need to create an account and authenticate. <br>
 See demo below.
 </p>
 
-<button type="button" onclick="getCatFact()">Get a cat fun fact</button>
+<button type="button" onclick="getCatFact()">Get a list of fun facts about cat!</button><br>
 <table id="funCatFact"></table>
+<div id="explainCatFact"></div>
 
 <script>
 function getCatFact() {
@@ -66,6 +69,12 @@ function showCatFact(xmlhttp) {
       table += "<tr><td>" + i + "</td><td>" + catFact[i].text + "</td></tr>"
     }
     document.getElementById("funCatFact").innerHTML = table;
+
+    let explain = "<h2>How to get this list of fun Cat Fact?</h2>";
+    explain += "When you click the 'Get a list of fun facts about cat!' button, "<br>
+    explain += "we hit the web endpoint https://cat-fact.herokuapp.com/fact, which returns a list of fun facts."<br>
+    explain += "then we simply parse and format the response and show it in a table."
+
   } else {
     document.getElementById("funCatFact").innerHTML = "ERROR: HTTP return status = " + xmlhttp.status;
   }
